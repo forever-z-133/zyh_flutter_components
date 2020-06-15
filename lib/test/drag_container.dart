@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:keep_area/main.dart';
 
 enum DragDirection {
   vertical,
@@ -49,7 +48,7 @@ class DragContainerState extends State<DragContainer> with SingleTickerProviderS
   @override
   void initState() {
     super.initState();
-    wrapSize = Size(widget.width ?? mediaWidth, widget.height ?? mediaHeight);
+    wrapSize = Size(widget.width ?? 750, widget.height ?? 1334);
     _controller = AnimationController(vsync: this);
     _controller.addListener(() {
       setState(() {

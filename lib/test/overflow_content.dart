@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:keep_area/app/utils/index.dart';
+import 'package:zyh_flutter_components/utils/index.dart';
 
 /*
  * 文本超出判断容器

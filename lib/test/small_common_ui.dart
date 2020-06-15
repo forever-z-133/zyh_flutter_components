@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:keep_area/app/utils/AppThemeColor.dart';
-import 'package:keep_area/main.dart';
 
 /// 每个子元素之间加点间隙
 List<Widget> widgetGapRight(double gap, { List<Widget> children }) {
@@ -26,13 +24,13 @@ List<Widget> widgetGapBottom(double gap, { List<Widget> children }) {
 Widget getNormalAppBar(String title, { Function onPop }){
   return new AppBar(
     elevation: 1,
-    backgroundColor: AppColor.colorW,
+    backgroundColor: Colors.white,
     brightness: Brightness.light,
     leading: new IconButton(
       icon: new Image(
-        color: AppColor.colorD,
-        height: adaptH(35),
-        width: adaptW(20),
+        color: Colors.grey,
+        height: 35,
+        width: 20,
         image: new AssetImage(
           'assets/images/Global/icon_return.png',
         ),
@@ -44,8 +42,8 @@ Widget getNormalAppBar(String title, { Function onPop }){
     title: new Text(
       title,
       style: new TextStyle(
-        color: AppColor.colorD,
-        fontSize: adaptFont(34),
+        color: Colors.grey,
+        fontSize: 34,
       ),
     ),
     centerTitle: true,
@@ -54,13 +52,13 @@ Widget getNormalAppBar(String title, { Function onPop }){
 
 /// 常用的文本（非段落）
 Widget normalText(String text, [double size = 26, Color color]) {
-  color = color ?? AppColor.colorB;
+  color = color ?? Colors.grey;
   return new Container(
     child: new Text(
       text,
       style: TextStyle(
         color: color,
-        fontSize: adaptFont(size),
+        fontSize: size,
         height: 1.14,
       ),
     )
@@ -77,7 +75,7 @@ Widget _normalRow({ List<Widget> children, double gap }) {
   );
 }
 Widget normalRow({ List<Widget> children, double itemGap, GestureTapCallback onClick }) {
-  itemGap = itemGap ?? adaptW(15);
+  itemGap = itemGap ?? 15;
   if (onClick != null) {
     return new GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -93,8 +91,8 @@ Widget normalIcon(url, [double size]) {
   return new Container(
     child: Image.asset(
       url,
-      width: adaptW(size),
-      height: adaptW(size),
+      width: size,
+      height: size,
     ),
   );
 }

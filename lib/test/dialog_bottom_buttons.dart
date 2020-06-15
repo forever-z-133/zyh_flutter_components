@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:keep_area/app/utils/AppThemeColor.dart';
-import 'package:keep_area/main.dart';
-
 
 Widget widgetDialogBottomButtonItem(BuildContext context, String text, {
   dynamic color,
@@ -20,7 +17,7 @@ Widget widgetDialogBottomButtonItem(BuildContext context, String text, {
           new Text(
             text,
             style: new TextStyle(
-              fontSize: adaptFont(30),
+              fontSize: 30,
               color: color,
             ),
           ),
@@ -41,8 +38,8 @@ Widget widgetDialogBottomButtons(BuildContext context, {
   Function onConfirm,
   Function onCancel,
 }) {
-  cancelColor = cancelColor ?? AppColor.colorF;
-  confirmColor = confirmColor ?? AppColor.colorB;
+  cancelColor = cancelColor ?? Colors.grey;
+  confirmColor = confirmColor ?? Colors.blue;
   Widget cancelButton = new Expanded(
     child: widgetDialogBottomButtonItem(context, cancelText,
       color: cancelColor,
@@ -60,16 +57,16 @@ Widget widgetDialogBottomButtons(BuildContext context, {
       }
     )
   );
-  Widget middleLine = new VerticalDivider(color: AppColor.colorI, width: 1);
+  Widget middleLine = new VerticalDivider(color: Colors.grey, width: 1);
   List<Widget> buttons;
   if (showCancel && showConfirm) buttons = <Widget>[cancelButton, middleLine, confirmButton];
   else if (showConfirm) buttons = <Widget>[confirmButton];
   else return new Container();
   return new Container(
-    height: adaptH(86),
+    height: 86,
     decoration: BoxDecoration(
       border: Border(
-        top: BorderSide(width: 1, color: AppColor.colorI),
+        top: BorderSide(width: 1, color: Colors.grey),
       ),
     ),
     child: new Row(

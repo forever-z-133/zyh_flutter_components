@@ -1,4 +1,6 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:zyh_flutter_components/components/BaseWidget.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,9 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
+            MyWidget(),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
@@ -60,5 +60,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ),
     );
+  }
+}
+
+class MyWidget extends BaseWidget {
+  onCreated(state) {
+    // print('1, $state');
+    state['title'] = 'xxx';
+  }
+  Widget render(context, state) {
+    print('2, $state');
+    return new GestureDetector(
+      onTap: () {
+        state['title'] = 'x';
+        setState();
+      },
+      child: new Text(state['title']),
+    );
+  }
+  onNetChange(ConnectivityResult result) {
+    // this.state['network'] = result;
   }
 }

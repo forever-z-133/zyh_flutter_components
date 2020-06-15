@@ -1,11 +1,8 @@
 //图片查看器
 import 'package:flutter/material.dart';
-import 'package:keep_area/app/common/ui/scale_container.dart';
-import 'package:keep_area/app/db/module_db.dart';
-import 'package:keep_area/app/utils/AppThemeColor.dart';
-import 'package:keep_area/app/utils/index.dart';
-import 'package:keep_area/core/manager/ResManager.dart';
-import 'package:keep_area/main.dart';
+import 'package:zyh_flutter_components/components/CacheImage.dart';
+import 'package:zyh_flutter_components/test/scale_container.dart';
+import 'package:zyh_flutter_components/utils/index.dart';
 
 /*
  * imgs url数组
@@ -62,6 +59,8 @@ class _PictureViewState extends State<PictureView> {
   // 初始化
   bool inited = false;
 
+  double mediaWidth = 750;
+
   @override
   void initState() {
     //页面初始化
@@ -69,50 +68,13 @@ class _PictureViewState extends State<PictureView> {
     this.urlList  = new List<String>();
     this.urlList = [];
 
-    this.currentUrl = DB.getInstance().currentUrl;
-    this.urlList = DB.getInstance().currentUrlList;
-
-    for(int u=0 ; u< DB.getInstance().currentCollectList.length ; u++){
-      var one = DB.getInstance().currentCollectList[u];
-      if(this.currentUrl == one){
-        this.urlList = DB.getInstance().currentCollectList;
-        break;
-      }
-    }
-
+    this.currentUrl = widget.currentImg;
+    this.urlList = widget.imgs;
     length = this.urlList.length;
-    int n = 0;
-    int flag = 0;
-    //var nn;
-    for(int i=0; i<length; i++){
-      n = n + 1;
-      if(this.urlList[i] == this.currentUrl){
-        flag = n;
-      }
-    }
-    if(flag > 1){
-      _scrollController = ScrollController(
-        initialScrollOffset: mediaWidth * (flag - 1)
-      );
-    }else {
-      _scrollController = ScrollController(
-        initialScrollOffset: 0,
-      );
-    }
-    if(!mounted){
-      return;
-    }
-    setState(() {
-      index = flag;
-    });
-  }
-  
-  @override
-  void didUpdateWidget(oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.currentIndex != index && widget.currentIndex > 0) {
-      slideTo(widget.currentIndex);
-    }
+    index = 0;
+    _scrollController = ScrollController(
+      initialScrollOffset: 0,
+    );
   }
 
   //下一张
@@ -264,8 +226,8 @@ class _PictureViewState extends State<PictureView> {
           '$index/$imgsLength',
           style: TextStyle(
             decoration: TextDecoration.none,
-            color: AppColor.colorW,
-            fontSize: adaptFont(32),
+            color: Colors.white,
+            fontSize: 32,
             fontWeight: FontWeight.w400,
             shadows: [
               Shadow(color: Colors.black, offset: Offset(1, 1)),
