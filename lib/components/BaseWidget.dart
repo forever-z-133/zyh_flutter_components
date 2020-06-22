@@ -1,16 +1,20 @@
-import 'package:connectivity/connectivity.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:zyh_flutter_components/utils/index.dart';
 
 class BaseWidget extends StatefulWidget {
   BaseWidget({ Key key }) : super(key: key);
+  State controller;
+  void bindState(State state) {
+    controller = state;
+  }
 
   @override
   BaseWidgetState createState() {
     this.onBeforeCreate();
     return new BaseWidgetState();
   }
-  
-  final Map<String, dynamic> state = {};
 
   void onBeforeCreate() {}
   void onCreated(state) {}
@@ -20,29 +24,28 @@ class BaseWidget extends StatefulWidget {
   void onUpdated() {}
   void onBeforeDestroy() {}
   void onDestroyed() {}
+  // Function setData;
 
-  Widget render(BuildContext context, state) {
+  Widget render(BuildContext context, Map<String, dynamic> state) {
     return new Container();
   }
-
-  void onNetChange(ConnectivityResult result) {}
 }
 
 class BaseWidgetState<T extends BaseWidget> extends State<T> {
   bool enter = false;
   final Map<String, dynamic> _state = {};
-  dynamic networkListener;
+  Timer _timer;
 
   @override
   initState() {
-    widget.onCreated(widget.state);
-    widget.state.forEach((key, value) {
-      _state[key] = value;
-    });
+    widget.onCreated(_state);
+    widget.bindState(this);
     super.initState();
-    // networkListener = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-    //   widget.onNetChange(result);
-    // });
+    // _timer = setInterval(() {
+      // if (mounted) return;
+    //   if (isDifferentState(_state, widget.state)) setState(() { });
+    // }, 300);
+    print('initState');
   }
 
   @override
@@ -50,6 +53,7 @@ class BaseWidgetState<T extends BaseWidget> extends State<T> {
     widget.onBeforeUpdate();
     super.didUpdateWidget(oldWidget);
     widget.onUpdated();
+    print('didUpdateWidget');
   }
 
   @override
@@ -57,19 +61,29 @@ class BaseWidgetState<T extends BaseWidget> extends State<T> {
     enter = !enter;
     enter ? widget.onBeforeMount() : widget.onBeforeDestroy();
     super.didChangeDependencies();
-    enter ? widget.onMounted() : widget.onDestroyed();
+    if (!enter) widget.onDestroyed();
+    print('didChangeDependencies');
   }
 
   @override
   void dispose() {
     super.dispose();
-    // networkListener.cancel();
+    _timer?.cancel();
+    print('dispose');
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: widget.render(context, _state),
-    );
+    setTimeout(() {
+      if (enter) widget.onMounted();
+    }, 100);
+    return widget.render(context, _state);
+  }
+
+  bool isDifferentState(Map newState, Map oldState) {
+    newState.forEach((key, value) {
+
+    });
+    return true;
   }
 }

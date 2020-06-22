@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 /// 仿 js 的 Array.some 方法
@@ -38,6 +39,16 @@ Future sleep(int delay) async {
 void setTimeout(Function callback, int delay) async {
   await sleep(delay);
   callback();
+}
+
+// 仿 js 的 setInterval
+Timer setInterval(Function callback, int delay) {
+  return new Timer.periodic(new Duration(milliseconds: delay), (timer) {
+    if (callback != null) callback();
+  });
+}
+void clearInterval(Timer _timer) {
+  _timer?.cancel();
 }
 
 // 针对 utf-16 写的公共方法
