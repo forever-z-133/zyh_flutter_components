@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:zyh_flutter_components/components/BaseWidget.dart';
 import 'package:zyh_flutter_components/pages/page1.dart';
 import 'package:zyh_flutter_components/pages/page2.dart';
+import 'package:zyh_flutter_components/pages/page11.dart';
+import 'package:zyh_flutter_components/pages/page22.dart';
 import 'package:zyh_flutter_components/utils/index.dart';
 
 void main() {
@@ -21,27 +23,42 @@ class MyApp extends StatelessWidget {
       routes: {
         '/page1': (context) => Page1(),
         '/page2': (context) => Page2(),
+        '/page11': (context) => Page11(),
+        '/page22': (context) => Page22(),
       },
-      home: new Container(
-        child: SingleChildScrollView(
-          child: new Container(
-            width: px(750),
-            child: new Column(
-              children: <Widget>[
-                // ...listData,
-                StateLess(
-                  title: 'less',
-                  child: new Container(),
-                ),
-                StateFul(
-                  title: 'ful',
-                  child: new Container(),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      home: Page1()
+      // home: new Container(
+      //   child: SingleChildScrollView(
+      //     child: new Container(
+      //       width: px(750),
+      //       child: new Column(
+      //         children: <Widget>[
+      //           // ...listData,
+      //           // StateLess(
+      //           //   title: 'less',
+      //           //   child: new Container(),
+      //           // ),
+      //           // StateFul(
+      //           //   title: 'ful',
+      //           //   child: new Container(),
+      //           // ),
+      //           new GestureDetector(
+      //             onTap: () {
+      //               Navigator.of(context).pushNamed('/page11');
+      //             },
+      //             child: new Text('to 11'),
+      //           ),
+      //           new GestureDetector(
+      //             onTap: () {
+      //               Navigator.of(context).pushNamed('/page22');
+      //             },
+      //             child: new Text('to 22'),
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
