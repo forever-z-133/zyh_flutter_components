@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zyh_flutter_components/components/MyToast.dart';
 import 'package:zyh_flutter_components/components/RunTimeWidget.dart';
+import 'package:zyh_flutter_components/test/small_common_ui.dart';
 
 class Page11 extends StatefulWidget {
   @override
@@ -29,18 +31,24 @@ class _Page11State extends State<Page11> {
       child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          new Text('PAGE11'),
+          normalText('PAGE11'),
           new GestureDetector(
             onTap: () {
               Navigator.of(context).pushNamed('/page22');
             },
-            child: new Text('to2'),
+            child: normalText('to2'),
           ),
           new GestureDetector(
             onTap: () {
               Navigator.of(context).pop();
             },
-            child: new Text('back'),
+            child: normalText('back'),
+          ),
+          new GestureDetector(
+            onTap: () {
+              showToast('xxx');
+            },
+            child: normalText('toast'),
           ),
         ],
       ),

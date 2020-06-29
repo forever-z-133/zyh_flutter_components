@@ -52,7 +52,7 @@ Widget getNormalAppBar(String title, { Function onPop }){
 
 /// 常用的文本（非段落）
 Widget normalText(String text, [double size = 26, Color color]) {
-  color = color ?? Colors.grey;
+  color = color ?? Colors.black;
   return new Container(
     child: new Text(
       text,
@@ -60,6 +60,7 @@ Widget normalText(String text, [double size = 26, Color color]) {
         color: color,
         fontSize: size,
         height: 1.14,
+        decoration: TextDecoration.none,
       ),
     )
   );
