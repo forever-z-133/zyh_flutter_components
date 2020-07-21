@@ -1,28 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:zyh_flutter_components/components/AppView.dart';
 import 'package:zyh_flutter_components/components/MyToast.dart';
 import 'package:zyh_flutter_components/test/small_common_ui.dart';
 
-class Page11 extends StatefulWidget {
+class Page11 extends BaseStatefulView {
   @override
-  _Page11State createState() => new _Page11State();
+  _Page11State onCreateState() => new _Page11State();
 }
-class _Page11State extends State<Page11> {
+class _Page11State extends BaseStatefulViewState<Page11> {
   String name = '11';
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // this.mounted = !this.mounted;
-    print('${this.name} ${this.mounted}');
-    // if (mounted) onShow();
-    // else onHide();
-  }
-
-  @override
-  void deactivate() {
-    super.deactivate();
-    print('${this.name} ${this.mounted}');
-  }
+  String get currentRouteName => '/111';
   
   @override
   Widget build(BuildContext context) {
