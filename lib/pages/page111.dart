@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zyh_flutter_components/components/AppView.dart';
+import 'package:zyh_flutter_components/components/BaseView.dart';
 import 'package:zyh_flutter_components/components/MyToast.dart';
 import 'package:zyh_flutter_components/test/small_common_ui.dart';
 

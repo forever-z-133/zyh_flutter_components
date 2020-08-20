@@ -2,14 +2,8 @@ import 'package:flutter/material.dart';
 
 abstract class BaseStatefulView extends StatefulWidget {
   BaseStatefulView({Key key}) : super(key: key);
-
   @override
-  BaseStatefulViewState createState() {
-    var baseStatefulViewState = this.onCreateState();
-    return baseStatefulViewState;
-  }
-
-  ///子类重写的创建方法，不需要重写createState方法
+  BaseStatefulViewState createState() => onCreateState();
   BaseStatefulViewState onCreateState();
 }
 

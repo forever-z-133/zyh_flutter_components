@@ -4,8 +4,6 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 /// 资源管理，app中获取各种资源都是从这里进行获取
 /// 服务器返回的所有结果都是有和服务器约定好的结果和参数内容
-/// @author sodaChen
-/// @date 2020年4月26日
 class ResManager {
   static ResManager _instance;
 

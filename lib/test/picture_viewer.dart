@@ -1,6 +1,6 @@
 //图片查看器
 import 'package:flutter/material.dart';
-import 'package:zyh_flutter_components/components/CacheImage.dart';
+import 'package:zyh_flutter_components/utils/cache_image.dart';
 import 'package:zyh_flutter_components/test/scale_container.dart';
 import 'package:zyh_flutter_components/utils/index.dart';
 

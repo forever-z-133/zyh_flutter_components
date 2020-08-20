@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zyh_flutter_components/components/TextOverflow.dart';
 
 class ClipPage extends StatelessWidget {
   @override
@@ -6,19 +7,64 @@ class ClipPage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-      child: ClipPath(
-        clipper: _ClipPagePath(),
-        child: Container(
-          color: Colors.grey,
-        ),
-        // child: Align(
-        //   alignment: Alignment.topLeft,
-        //   child: Image.network(
-        //     'https://picsum.photos/${width.round()}/${height.round()}'
-        //   ),
-        // )
+      padding: EdgeInsets.all(20),
+      child: Row(
+        children: <Widget>[
+          Text('简介'),
+          SizedBox(width: 20),
+          Expanded(
+            flex: 1,
+            child: Text('内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容',maxLines: 1,overflow: TextOverflow.ellipsis,),
+          ),
+          Icon(Icons.backup)
+          // Expanded(
+          //   flex: 1,
+          //   child: Row(
+          //     children: <Widget>[
+          //       Icon(Icons.backup),
+          //       Expanded(
+          //         flex: 1,
+          //         child: Text('内容内容内容内容内容',maxLines: 1,overflow: TextOverflow.ellipsis,),
+          //       ),
+          //       SizedBox(width: 5),
+          //       Icon(Icons.backup)
+          //     ],
+          //   ),
+          // )
+        ],
       ),
     );
+    // return Container(
+    //   child: ClipPath(
+    //     clipper: _ClipPagePath(),
+    //     child: Container(
+    //       color: Colors.grey,
+    //       child: Column(
+    //         mainAxisSize: MainAxisSize.min,
+    //         children: <Widget>[
+    //           TextOverflowWidget(
+    //             line: 2,
+    //             child: Text(
+    //               '文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字',
+    //               style: TextStyle(
+    //                 backgroundColor: Colors.red
+    //               ),
+    //             )
+    //           ),
+    //           Container(
+    //             child: Text('more more more more'),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //     // child: Align(
+    //     //   alignment: Alignment.topLeft,
+    //     //   child: Image.network(
+    //     //     'https://picsum.photos/${width.round()}/${height.round()}'
+    //     //   ),
+    //     // )
+    //   ),
+    // );
   }
 }
 
